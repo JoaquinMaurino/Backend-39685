@@ -16,6 +16,7 @@ class ProductManager {
       id = this.products.length + 1;
       const newObject = { ...object, id };
       this.products.push(newObject);
+      return console.log(`Agregaste el producto con id: ${newObject.id} exitosamente`);
     }
   }
   getProducts() {
