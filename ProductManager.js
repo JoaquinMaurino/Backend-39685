@@ -13,7 +13,7 @@ class ProductManager {
       );
     } else {
       let id;
-      this.products.length === 0 ? (id = 1) : (id = this.products.length + 1);
+      id = this.products.length + 1;
       const newObject = { ...object, id };
       this.products.push(newObject);
     }
@@ -24,7 +24,8 @@ class ProductManager {
   getPorductById(id) {
     const productFind = this.products.find((product) => id === product.id);
     if (productFind) {
-      return JSON.stringify(productFind);
+      let productJSON = JSON.stringify(productFind);
+      return console.log(`El producto seleccionado es: ${productJSON}`);
     } else {
       console.log("Not Found");
     }
@@ -75,11 +76,4 @@ clase1.addProduct({
 
 console.log(clase1);
 
-console.log("El producto seleccionado es:" + clase1.getPorductById(2));
-
-/* {title: 
-description :
-price:
-thumbnail:
-code:
-stock:} */
+clase1.getPorductById(2)
