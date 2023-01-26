@@ -76,12 +76,17 @@ class ProductManager {
       const read = await fs.readFile(this.path, "utf-8");
       const data = JSON.parse(read);
       const index = data.findIndex((product) => product.id === id);
+      if(!data[index][entry]){
+        throw Error
+      }
       data[index][entry] = value;
       await fs.writeFile(this.path, JSON.stringify(data, null, 2));
       return console.log(data); 
     } catch (error) {
-      throw error;
+      console.log('Not found');
     }
   }
 }
 const products = new ProductManager("./data.json");
+
+await products.updateProduct(1, "stock", 32)

@@ -2,10 +2,10 @@
   {
     "title": "Cafe",
     "description": "Blend colombiano",
-    "price": 6500,
+    "price": 420,
     "thumbnail": "http://www.starbucks.com",
-    "code": 4650,
-    "stock": 40,
+    "code": 450,
+    "stock": 32,
     "id": 1
   }
 ]
