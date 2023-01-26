@@ -27,7 +27,7 @@ class ProductManager {
         );
       }
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
 
@@ -36,7 +36,7 @@ class ProductManager {
       const read = await fs.readFile(this.path, "utf8");
       return JSON.parse(read);
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
 
@@ -51,7 +51,7 @@ class ProductManager {
         console.log("Not Found");
       }
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
 
@@ -59,36 +59,29 @@ class ProductManager {
     try {
       const read = await fs.readFile(this.path, "utf-8");
       const data = JSON.parse(read);
-      const productoEliminado = JSON.stringify(data.find((product) => product.id === id));
+      const productoEliminado = JSON.stringify(
+        data.find((product) => product.id === id)
+      );
       const newData = data.filter((product) => product.id !== id);
       await fs.writeFile(this.path, JSON.stringify(newData), "utf-8");
-      return console.log(`El producto ${productoEliminado} ha sido eliminado exitosamente`)
+      return console.log(
+        `El producto ${productoEliminado} ha sido eliminado exitosamente`
+      );
     } catch (error) {
-      console.log(error);
+      throw error;
     }
-   
   }
-  async updateProduct(id, entry) {
-
+  async updateProduct(id, entry, value) {
+    try {
+      const read = await fs.readFile(this.path, "utf-8");
+      const data = JSON.parse(read);
+      const index = data.findIndex((product) => product.id === id);
+      data[index][entry] = value;
+      await fs.writeFile(this.path, JSON.stringify(data, null, 2));
+      return console.log(data); 
+    } catch (error) {
+      throw error;
+    }
   }
 }
-
 const products = new ProductManager("./data.json");
-
-products.addProduct({
-  title: "Cafe",
-  description: "Blend colombiano",
-  price: 6500,
-  thumbnail: "http://www.starbucks.com",
-  code: 789,
-  stock: 40,
-})
-
-products.addProduct({
-  title: "Yerba",
-  description: "Hierbas",
-  price: 850,
-  thumbnail: "http://www.taragui.com",
-  code: 420,
-  stock: 30,
-});

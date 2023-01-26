@@ -4,17 +4,8 @@
     "description": "Blend colombiano",
     "price": 6500,
     "thumbnail": "http://www.starbucks.com",
-    "code": 789,
+    "code": 4650,
     "stock": 40,
     "id": 1
-  },
-  {
-    "title": "Yerba",
-    "description": "Hierbas",
-    "price": 850,
-    "thumbnail": "http://www.taragui.com",
-    "code": 420,
-    "stock": 30,
-    "id": 2
   }
 ]
