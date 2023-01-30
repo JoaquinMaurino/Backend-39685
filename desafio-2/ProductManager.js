@@ -18,7 +18,7 @@ class ProductManager {
         );
       } else {
         let id;
-        id = data.length + 1;
+        data.length === 0 ? (id = 1) : (id = data[data.length - 1].id + 1)
         const newObject = { ...object, id };
         data.push(newObject);
         await fs.writeFile(this.path, JSON.stringify(data, null, 2), "utf-8");
@@ -30,7 +30,6 @@ class ProductManager {
       throw error;
     }
   }
-
   async getProducts() {
     try {
       const read = await fs.readFile(this.path, "utf8");
@@ -89,4 +88,4 @@ class ProductManager {
 }
 const products = new ProductManager("./data.json");
 
-await products.updateProduct(1, "stock", 32)
+

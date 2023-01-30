@@ -1,11 +1,20 @@
 [
   {
-    "title": "Cafe",
-    "description": "Blend colombiano",
-    "price": 420,
-    "thumbnail": "http://www.starbucks.com",
-    "code": 450,
-    "stock": 32,
+    "title": "Yerba",
+    "description": "Hierbas",
+    "price": 850,
+    "thumbnail": "http://www.taragui.com",
+    "code": 420,
+    "stock": 30,
     "id": 1
+  },
+  {
+    "title": "Cafe",
+    "description": "Colombiano",
+    "price": 1500,
+    "thumbnail": "http://www.starbucks.com",
+    "code": 870,
+    "stock": 15,
+    "id": 2
   }
 ]
