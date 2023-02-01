@@ -9,12 +9,48 @@
     "id": 1
   },
   {
+    "title": "Azucar",
+    "description": "Hierbas",
+    "price": 78,
+    "thumbnail": "http://www.taragui.com",
+    "code": 456,
+    "stock": 25,
+    "id": 2
+  },
+  {
+    "title": "Milanesa",
+    "description": "Hierbas",
+    "price": 850,
+    "thumbnail": "http://www.taragui.com",
+    "code": 120,
+    "stock": 30,
+    "id": 3
+  },
+  {
+    "title": "Pure",
+    "description": "Hierbas",
+    "price": 850,
+    "thumbnail": "http://www.taragui.com",
+    "code": 365,
+    "stock": 30,
+    "id": 4
+  },
+  {
+    "title": "Miel",
+    "description": "Hierbas",
+    "price": 850,
+    "thumbnail": "http://www.taragui.com",
+    "code": 785,
+    "stock": 30,
+    "id": 5
+  },
+  {
     "title": "Cafe",
     "description": "Colombiano",
     "price": 1500,
     "thumbnail": "http://www.starbucks.com",
     "code": 870,
     "stock": 15,
-    "id": 2
+    "id": 6
   }
 ]

@@ -86,6 +86,5 @@ class ProductManager {
     }
   }
 }
-const products = new ProductManager("./data.json");
 
-
+export default ProductManager;
