@@ -27,7 +27,7 @@
     "id": 3
   },
   {
-    "title": "Pure",
+    "title": "Puré",
     "description": "Hierbas",
     "price": 850,
     "thumbnail": "http://www.taragui.com",
@@ -40,17 +40,53 @@
     "description": "Hierbas",
     "price": 850,
     "thumbnail": "http://www.taragui.com",
-    "code": 785,
+    "code": 568,
     "stock": 30,
     "id": 5
+  },
+  {
+    "title": "Shampoo",
+    "description": "Hierbas",
+    "price": 850,
+    "thumbnail": "http://www.taragui.com",
+    "code": 482,
+    "stock": 30,
+    "id": 6
+  },
+  {
+    "title": "Desodorante",
+    "description": "Hierbas",
+    "price": 850,
+    "thumbnail": "http://www.taragui.com",
+    "code": 301,
+    "stock": 30,
+    "id": 7
+  },
+  {
+    "title": "Te",
+    "description": "Hierbas",
+    "price": 850,
+    "thumbnail": "http://www.taragui.com",
+    "code": 790,
+    "stock": 30,
+    "id": 8
+  },
+  {
+    "title": "MateCocido",
+    "description": "Hierbas",
+    "price": 850,
+    "thumbnail": "http://www.taragui.com",
+    "code": 102,
+    "stock": 30,
+    "id": 9
   },
   {
     "title": "Cafe",
     "description": "Colombiano",
     "price": 1500,
     "thumbnail": "http://www.starbucks.com",
-    "code": 870,
+    "code": 165,
     "stock": 15,
-    "id": 6
+    "id": 10
   }
 ]
