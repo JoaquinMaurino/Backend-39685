@@ -1,39 +1,37 @@
 import express from "express";
+import router from "./routes/products.js";
+import { __dirname } from "./path.js";
+const app = express();
 
-import ProductManager from "../../desafio-2/ProductManager.js";
-
-const manager = new ProductManager("../../Backend 39685/desafio-2/data.json");
-
-const app = express(); // app es igual a la ejecucion de express
-
+//Middlewares:
 app.use(express.urlencoded({ extended: true })); // Permite realizar consultas den la URL (req.query)
+app.use(express.json()); // Permite enviar objetos json (req.body)
+
+//Routes
+app.use('/static', express.static(__dirname+'/public'))
+app.use('/api/products', router)
+
 
 const PORT = 8080;
-
-//Ruta raiz
-app.get("/", (req, res) => {
-  res.send("Primer servidor con express");
-});
-
-app.get("/products", async (req, res) => {
-  const products = await manager.getProducts();
-  let { limit } = req.query;
-  if (limit) {
-    res.send(products.slice(0, limit));
-  } else {
-    res.send(products);
-  }
-});
-
-app.get("/products/:id", async (req, res) => {
-  const product = await manager.getById(parseInt(req.params.id));
-  if (product) {
-    res.send(product);
-  } else {
-    res.json({ Error: "id not found" });
-  }
-});
-
 app.listen(PORT, () => {
   console.log(`Server run on port ${PORT}`);
 });
+
+//import multer from "multer";
+//Config basica de multer:
+//const upload = multer({ dest: "src/public/img" });
+//Config avanzada:
+/* const storage = multer.diskStorage({
+  destination: (req, file, cb)=>{
+    cb(null, 'src/public/img')
+  }, 
+  filename: (req, file, cb)=>{
+    cb(null, `${file.originalname}`)
+  }
+})
+ const upload = multer({storage:storage}) */
+
+ /* app.post("/upload", upload.single("product"), (req, res) => {
+  console.log(req.body);
+  res.send("Imagen cargada");
+}); */
