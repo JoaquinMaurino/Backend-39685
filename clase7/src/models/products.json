@@ -81,30 +81,12 @@
     "id": 9
   },
   {
+    "price": "1800",
+    "id": 10,
     "title": "Cafe",
-    "description": "Colombiano",
-    "price": 1500,
-    "thumbnail": "http://www.starbucks.com",
-    "code": 165,
-    "stock": 15,
-    "id": 10
-  },
-  {
-    "title": "Cerveza",
-    "description": "Maltosa",
-    "price": 99,
-    "thumbnail": "http://www.quilmes.com",
-    "code": 613,
-    "stock": 8,
-    "id": 11
-  },
-  {
-    "title": "Cerveza",
-    "description": "Maltosa",
-    "price": 99,
-    "thumbnail": "http://www.quilmes.com",
-    "code": 500,
-    "stock": 8,
-    "id": 12
+    "description": "Colombiano ",
+    "thumbnail": "www.starbucks.com",
+    "code": "5689",
+    "stock": "23"
   }
 ]
