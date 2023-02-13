@@ -68,7 +68,7 @@ class ProductManager {
   }
 
 
-  async updateProduct(id, { title, description, price, thumbnail, code, stock }) {
+  async updateProduct(id, { title, description, price, thumbnail, code, stock, category, status }) {
     const array =  await this.getProducts();
     try {
       if (array.some(product => product.id === id)){
@@ -79,6 +79,8 @@ class ProductManager {
         array[index].thumbnail = thumbnail
         array[index].code = code
         array[index].stock = stock
+        array[index].category = category
+        array[index].status = status
         await fs.writeFile(this.path, JSON.stringify(array, null, 2), "utf8");
         return this.getById(id)
       } else {

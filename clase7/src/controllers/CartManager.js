@@ -1,4 +1,5 @@
 import { promises as fs } from "fs";
+import { pid } from "process";
 
 class CartManager {
   constructor(path) {
@@ -42,17 +43,16 @@ class CartManager {
       const prodsInCart = cart.products
       const isInCart = prodsInCart.find(product => product.id === pId)
       if (!isInCart){
-        prodsInCart.quantity = 1;
+        const newProduct = {
+          "id": pId,
+          "quantity": 1
+        }
+        prodsInCart.push(newProduct)
       }else{
-        prodsInCart.quantity = quantity++;
+        const index = prodsInCart.findIndex(product=> product.id === pId)
+        prodsInCart[index].quantity++
       }
-      const newProduct = {
-        "quantity": prodsInCart.quantity, 
-        "id": pId
-      }
-      prodsInCart.push(newProduct)
       await fs.writeFile(this.path, JSON.stringify(data, null, 2), "utf-8");
-      return newProduct;
     } catch (error) {
       throw error;
     }

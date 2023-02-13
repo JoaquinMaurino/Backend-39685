@@ -34,7 +34,6 @@ routerProducts.put("/:id", async (req, res) => {
     parseInt(req.params.id),
     req.body
   );
-  console.log(product);
   res.send(`Producto ${JSON.stringify(product)} actualizado`);
 });
 
