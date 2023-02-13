@@ -17,4 +17,13 @@ routerCarts.post('/', async (req, res)=>{
     res.send(`Nuevo carrito ${JSON.stringify(newCart)} creado`)
 })
 
+
+routerCarts.post('/:cId/products/:pId', async (req, res)=>{
+    const newProdInCart = await cartManager.createProductInCart(parseInt(req.params.cId), parseInt(req.params.pId))
+    console.log(newProdInCart);
+    res.send(`El producto: ${JSON.stringify(newProdInCart)} fue agregado al carrito con el ID: ${req.params.cId}`)
+})
+
+
+
 export default routerCarts;

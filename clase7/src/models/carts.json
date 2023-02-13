@@ -1,34 +1,6 @@
 [
   {
-    "id": 1,
-    "products": [
-      {
-        "title": "MateCocido",
-        "description": "Hierbas",
-        "price": 850,
-        "thumbnail": "http://www.taragui.com",
-        "code": 102,
-        "stock": 30,
-        "id": 9
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "products": []
-  },
-  {
-    "id": 3,
-    "products": []
-  },
-  {
-    "id": 4,
-    "products": []
-  },
-  {
+    "quantity": 1,
     "id": 5
-  },
-  {
-    "id": 6
   }
 ]

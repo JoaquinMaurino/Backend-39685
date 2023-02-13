@@ -20,14 +20,42 @@ class CartManager {
   }
 
   async getProducts(id) {
-    const read = await fs.readFile(this.path, "utf8");
-    const data = JSON.parse(read);
-    const index = data.findIndex((cart) => cart.id === id);
-    const prodsInCart = data[index].products;
-    prodsInCart.map((product) => {
-      product;
-    });
-    return prodsInCart
+    try {
+      const read = await fs.readFile(this.path, "utf8");
+      const data = JSON.parse(read);
+      const index = data.findIndex((cart) => cart.id === id);
+      const prodsInCart = data[index].products;
+      prodsInCart.map((product) => {
+        product;
+      });
+      return prodsInCart;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async createProductInCart(cId, pId) {
+    try {
+      const read = await fs.readFile(this.path, "utf8");
+      const data = JSON.parse(read);
+      const index = data.findIndex((cart) => cart.id === cId);
+      const prodsInCart = data[index].products;
+      const isInCart = prodsInCart.find(product => product.id === pId)
+      if (!isInCart){
+        prodsInCart.quantity = 1;
+      }else{
+        prodsInCart.quantity = quantity ++;
+      }
+      const newProduct = {
+        "quantity": prodsInCart.quantity, 
+        "id": pId
+      }
+      prodsInCart.push(newProduct)
+      await fs.writeFile(this.path, JSON.stringify(prodsInCart, null, 2), "utf-8");
+      return newProduct;
+    } catch (error) {
+      throw error;
+    }
   }
 }
 
