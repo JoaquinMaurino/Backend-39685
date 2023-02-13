@@ -25,5 +25,4 @@ routerCarts.post('/:cId/products/:pId', async (req, res)=>{
 })
 
 
-
 export default routerCarts;
