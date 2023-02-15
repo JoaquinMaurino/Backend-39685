@@ -11,15 +11,13 @@ class ProductManager {
       const objCode = data.map((product) => product.code);
       const objExist = objCode.includes(object.code);
       if (objExist) {
-        console.log("Codigo de producto existente, intente otro");
-      } else if (Object.values(object).includes("")) {
-        console.log(
-          "Todos los campos del producto deben estar completos para poder ser ingresado"
-        );
+        return "Codigo de producto existente, intente otro";
+      } else if (Object.values(object).includes(""||null||false)) {
+        return "Todos los campos del producto deben estar completos para poder ser ingresado";
       } else {
         let id;
         data.length === 0 ? (id = 1) : (id = data[data.length - 1].id + 1);
-        const newObject = { ...object, id };
+        const newObject = {id,...object};
         data.push(newObject);
         await fs.writeFile(this.path, JSON.stringify(data, null, 2), "utf-8");
         return newObject;
@@ -56,8 +54,8 @@ class ProductManager {
     const array = await this.getProducts();
     try {
       const productoEliminado = array.find((product) => product.id === id);
-      if (!productoEliminado){
-        throw new Error
+      if (!productoEliminado) {
+        throw new Error();
       }
       const newData = array.filter((product) => product.id !== id);
       await fs.writeFile(this.path, JSON.stringify(newData, null, 2), "utf-8");
@@ -67,24 +65,26 @@ class ProductManager {
     }
   }
 
-
-  async updateProduct(id, { title, description, price, thumbnail, code, stock, category, status }) {
-    const array =  await this.getProducts();
+  async updateProduct(
+    id,
+    { title, description, price, thumbnail, code, stock, category, status }
+  ) {
+    const array = await this.getProducts();
     try {
-      if (array.some(product => product.id === id)){
+      if (array.some((product) => product.id === id)) {
         const index = array.findIndex((product) => product.id === id);
-        array[index].title = title
-        array[index].description = description
-        array[index].price = price
-        array[index].thumbnail = thumbnail
-        array[index].code = code
-        array[index].stock = stock
-        array[index].category = category
-        array[index].status = status
+        array[index].title = title;
+        array[index].description = description;
+        array[index].price = price;
+        array[index].thumbnail = thumbnail;
+        array[index].code = code;
+        array[index].stock = stock;
+        array[index].category = category;
+        array[index].status = status;
         await fs.writeFile(this.path, JSON.stringify(array, null, 2), "utf8");
-        return this.getById(id)
+        return this.getById(id);
       } else {
-        return 'Porducto no encontrado'
+        return "Porducto no encontrado";
       }
     } catch (error) {
       console.log("Not found");

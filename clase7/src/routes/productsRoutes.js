@@ -25,16 +25,15 @@ routerProducts.get("/:id", async (req, res) => {
 
 routerProducts.post("/", async (req, res) => {
   const product = await manager.addProduct(req.body);
-  res.send(`Producto ${JSON.stringify(product)} creado`);
+  res.send(JSON.stringify(product));
 });
 
 routerProducts.put("/:id", async (req, res) => {
-  //const { title, description, price, thumbnail, code, stock } = req.body;
   const product = await manager.updateProduct(
     parseInt(req.params.id),
     req.body
   );
-  res.send(`Producto ${JSON.stringify(product)} actualizado`);
+  res.send(JSON.stringify(product))
 });
 
 routerProducts.delete("/:id", async (req, res) => {

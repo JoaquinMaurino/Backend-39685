@@ -1,11 +1,19 @@
 import express from "express";
 import routerProducts from "./routes/productsRoutes.js";
 import routerCarts from "./routes/cartsRoutes.js";
-//import routerCarts from "./routes/carts.js";
 import { __dirname } from "./path.js";
 import {engine} from 'express-handlebars'
+import { Server } from "socket.io";
 import * as path from 'path'
+
 const app = express();
+
+const PORT = 8080;
+
+const server = app.listen(PORT, () => {
+  console.log(`Server run on port ${PORT}`);
+});
+
 
 //Middlewares:
 app.use(express.urlencoded({ extended: true })); // Permite realizar consultas den la URL (req.query)
@@ -13,6 +21,21 @@ app.use(express.json()); // Permite enviar objetos json (req.body)
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', path.resolve(__dirname, './views')) //___dirname + views
+
+//Server IO
+const io = new Server(server)
+
+io.on("connection", (socket)=>{ //io.on se establece la conexion con el cliente
+  console.log("Cliente conectado");
+
+  socket.on("mensaje", info=>{
+    console.log(info);
+  })  // socket.on recibo informacion de mi cliente
+
+  socket.emit("mensaje-general", "Hola desde mensaje general") // envio mensaje a todos los clientes
+
+  socket.broadcast.emit("mensaje-general", "Hola desde mensaje socket propio") // Envio un mensaje a todos los clientes conectados a otros sockets menos al que esta conectado a este socket actualmente
+})
 
 //Routes
 app.use('/', express.static(__dirname+'/public'))
@@ -23,7 +46,7 @@ app.get('/', (req, res)=>{
   const user = {
     nombre: "Pablo", 
     email: "pe@gmail.com", 
-    rol: "Tutor", 
+    rol: "Profe", 
   }
   const cursos = [
     {numero: 123, dia: 'Lun y Mar', turno: 'Tarde'},
@@ -38,10 +61,15 @@ app.get('/', (req, res)=>{
   })
 })
 
-const PORT = 8080;
-app.listen(PORT, () => {
-  console.log(`Server run on port ${PORT}`);
-});
+
+
+
+
+
+
+
+
+
 
 //import multer from "multer";
 //Config basica de multer:

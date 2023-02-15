@@ -7,19 +7,18 @@
     "price": 5000,
     "code": "3PR-UD5",
     "stock": 8,
-    "category": "Calzado", 
+    "category": "Calzado",
     "status": "True"
   },
   {
     "id": 2,
     "title": "Borcegos Integral Work",
-    "description":
-      "Borcegos de cuero reforzado, con suela febo con cierre lateral. Plantilla termoformada, forrería interior absorbente.",
+    "description": "Borcegos de cuero reforzado, con suela febo con cierre lateral. Plantilla termoformada, forrería interior absorbente.",
     "img": "public/img/BotasMujer.jpeg",
     "price": 6000,
     "code": "9EQ-LAA",
     "stock": 5,
-    "category": "Calzado", 
+    "category": "Calzado",
     "status": "True"
   },
   {
@@ -30,7 +29,7 @@
     "price": 4500,
     "code": "9KT-8FL",
     "stock": 15,
-    "category": "Indumentaria", 
+    "category": "Indumentaria",
     "status": "True"
   },
   {
@@ -41,7 +40,7 @@
     "price": 8700,
     "code": "9QS-D9R",
     "stock": 18,
-    "category": "Indumentaria", 
+    "category": "Indumentaria",
     "status": "True"
   },
   {
@@ -52,7 +51,7 @@
     "price": 6200,
     "code": "A7J-P6S",
     "stock": 7,
-    "category": "Chaleco", 
+    "category": "Chaleco",
     "status": "True"
   },
   {
@@ -63,7 +62,7 @@
     "price": 6200,
     "code": "DCE-ZBA",
     "stock": 7,
-    "category": "Chaleco", 
+    "category": "Chaleco",
     "status": "True"
   },
   {
@@ -74,7 +73,7 @@
     "price": 6200,
     "code": "DPF-S83",
     "stock": 7,
-    "category": "Indumentaria", 
+    "category": "Indumentaria",
     "status": "True"
   },
   {
@@ -85,7 +84,7 @@
     "price": 6200,
     "code": "EMV-7U4",
     "stock": 7,
-    "category": "Indumentaria", 
+    "category": "Indumentaria",
     "status": "True"
   },
   {
@@ -96,7 +95,7 @@
     "price": 6200,
     "code": "KBL-4RG",
     "stock": "7",
-    "category": "Indumentaria", 
+    "category": "Indumentaria",
     "status": "True"
   },
   {
@@ -107,7 +106,7 @@
     "price": 6200,
     "code": "L3C-CTJ",
     "stock": 7,
-    "category": "Indumentaria", 
+    "category": "Indumentaria",
     "status": "True"
   },
   {
@@ -118,7 +117,7 @@
     "price": 6200,
     "code": "LAF-YSL",
     "stock": 7,
-    "category": "Indumentaria", 
+    "category": "Indumentaria",
     "status": "True"
   },
   {
@@ -129,7 +128,7 @@
     "price": 6200,
     "code": "Z3N-667",
     "stock": 7,
-    "category": "Calzado", 
+    "category": "Calzado",
     "status": "True"
   },
   {
@@ -137,10 +136,10 @@
     "title": "Zapatos Mujer",
     "description": "Indumentaria",
     "img": "public/img/ZapatosMujer.jpeg",
-    "price": 6200,
+    "price": 6500,
     "code": "ZPG-CN7",
-    "stock": 7,
-    "category": "Calzado", 
+    "stock": 12,
+    "category": "Calzado",
     "status": "True"
   }
 ]

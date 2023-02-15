@@ -37,22 +37,26 @@ class CartManager {
 
   async createProductInCart(cId, pId) {
     try {
-      const read = await fs.readFile(this.path, "utf8")
-      const data = JSON.parse(read)
-      const cart = data.find(cart => cart.id === cId)
-      const prodsInCart = cart.products
-      const isInCart = prodsInCart.find(product => product.id === pId)
-      if (!isInCart){
-        const newProduct = {
-          "id": pId,
-          "quantity": 1
+      const read = await fs.readFile(this.path, "utf8");
+      const data = JSON.parse(read);
+      const cart = data.find((cart) => cart.id === cId);
+      if (!cart) {
+        return `There is no Cart with ID: ${cId}`;
+      } else {
+        const prodsInCart = cart.products;
+        const isInCart = prodsInCart.find((product) => product.id === pId);
+        if (!isInCart) {
+          const newProduct = {
+            id: pId,
+            quantity: 1,
+          };
+          prodsInCart.push(newProduct);
+        } else {
+          const index = prodsInCart.findIndex((product) => product.id === pId);
+          prodsInCart[index].quantity++;
         }
-        prodsInCart.push(newProduct)
-      }else{
-        const index = prodsInCart.findIndex(product=> product.id === pId)
-        prodsInCart[index].quantity++
+        await fs.writeFile(this.path, JSON.stringify(data, null, 2), "utf-8");
       }
-      await fs.writeFile(this.path, JSON.stringify(data, null, 2), "utf-8");
     } catch (error) {
       throw error;
     }

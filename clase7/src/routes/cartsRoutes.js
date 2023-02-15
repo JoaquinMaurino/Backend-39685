@@ -22,8 +22,8 @@ routerCarts.post('/', async (req, res)=>{
 
 
 routerCarts.post('/:cId/products/:pId', async (req, res)=>{
-    const newProdInCart = await cartManager.createProductInCart(parseInt(req.params.cId), parseInt(req.params.pId))
-    res.send(`New product added to Cart with ID: ${req.params.cId}`)
+    const prodInCart = await cartManager.createProductInCart(parseInt(req.params.cId), parseInt(req.params.pId))
+    res.send(JSON.stringify(prodInCart))
 })
 
 
