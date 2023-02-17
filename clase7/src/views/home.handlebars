@@ -1,13 +1,15 @@
-<h1>¡Hola, {{user.nombre}}</h1>
+<h1>Lista de productos estática:</h1>
+{{#each products}}
+  <div>
+    <p>Id: {{this.id}}</p>
+    <p>Title: {{this.title}}</p>
+    <p>Description: {{this.description}}</p>
+    <p>Img: {{this.img}}</p>
+    <p>Price: {{this.price}}</p>
+    <p>Code: {{this.code}}</p>
+    <p>Stock: {{this.stock}}</p>
+    <p>Category: {{this.category}}</p>
+    <p>Status: {{this.status}}</p>
+  </div>
+{{/each}}
 
-{{#if isTutor}}
-    {{#each cursos}}
-    <div>
-        <p>{{this.numero}}</p>
-        <p>{{this.dia}}</p>
-        <p>{{this.turno}}</p>
-    </div>
-    {{/each}}
-{{else}}
-    <p>No sos tutor</p>
-{{/if}}
