@@ -21,7 +21,7 @@ app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", path.resolve(__dirname, "./views")); //___dirname + views
 
-const products = [];
+let products = [];
 
 //Server IO
 const io = new Server(server);
@@ -29,15 +29,24 @@ io.on("connection", (socket) => {
   //io.on se establece la conexion con el cliente
   console.log("Cliente conectado");
   
+  socket.emit("array", products);
+  
   socket.on("product", (newProduct) => {
-    products.push(newProduct);
+    let id;
+    products.length === 0 ? (id = 1) : (id = products[products.length - 1].id + 1);
+    products.push({id, ...newProduct});
+    io.emit("array", products)
   }); // recibo el nuevo producto y lo agrego al array
   
   socket.on("deleteProduct", id=>{
-    products.filter(product=>product.id !== id)
+    products = products.filter(product=>parseInt(product.id) !== id)
+    io.emit("array", products)
   })
-  
-  socket.emit("array", products);
+
+  socket.on("deleteAllProducts", data=>{
+    products = data
+    io.emit("array", products)
+  })
 });
 
 //Routes

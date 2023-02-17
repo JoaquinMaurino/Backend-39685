@@ -1,24 +1,45 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <h1>Formulario para carga y eliminacion de productos</h1>
-<form id="formId">
-    <p>Complete los siguientes campos para cargar un producto</p>
-    <input type="text" id="title""placeholder="Title">
-    <input type="number" id="id" placeholder="ID">
-    <input type="number" id="price"  placeholder="Price">
-    <button type="submit">Enviar</button>
-</form>
-<span id="error"></span>
-<h2>Lista de productos en tiempo real:</h2>
-<div id="products"></div>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <h1 class="text-center">Formulario para carga y eliminacion de productos</h1>
+    <form id="formId" class="text-center">
+      <p>Complete los siguientes campos para cargar un producto</p>
+      <input type="text" id="title" placeholder="Title" />
+      <input type="number" id="price" placeholder="Price" />
+      <Button class="btn btn-primary" type="submit">Enviar</Button>
+    </form>
+    <span id="error"></span>
+    <h2 class="text-center">Lista de productos en tiempo real:</h2>
+    <div class="text-center">
+    <Button id="deleteAll" class="btn btn-danger mb-3">Eliminar todos los productos</button>
+    </div>
+    <div >
+      <table  class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col">ID</th>
+        <th scope="col">Price</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+        <tbody id="products">
 
+        </tbody>
+      </table>
+    </div>
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.min.js"
@@ -26,7 +47,11 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
     <script src="/js/realTime.js"></script>
-</body>
+  </body>
 </html>
-
