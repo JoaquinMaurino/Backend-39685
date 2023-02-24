@@ -1,15 +1,33 @@
 <h1>Lista de productos estática:</h1>
-{{#each products}}
-  <div>
-    <p>Id: {{this.id}}</p>
-    <p>Title: {{this.title}}</p>
-    <p>Description: {{this.description}}</p>
-    <p>Img: {{this.img}}</p>
-    <p>Price: {{this.price}}</p>
-    <p>Code: {{this.code}}</p>
-    <p>Stock: {{this.stock}}</p>
-    <p>Category: {{this.category}}</p>
-    <p>Status: {{this.status}}</p>
-  </div>
-{{/each}}
-
+      <table  class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col">ID</th>
+        <th scope="col">Description</th>
+        <th scope="col">Img</th>
+        <th scope="col">Price</th>
+        <th scope="col">Code</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Category</th>
+        <th scope="col">Status</th>
+      </tr>
+      </thead>
+      <tbody>
+        {{#each products}}
+        <tr>
+        <th scope="row"></th>
+        <td>{{this.title}}</td>
+        <td>{{this.id}}</td>
+        <td>{{this.description}}</td>
+        <td>{{this.img}}</td>
+        <td>{{this.price}}</td>
+        <td>{{this.code}}</td>
+        <td>{{this.stock}}</td>
+        <td>{{this.category}}</td>
+        <td>{{this.status}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+      </table>

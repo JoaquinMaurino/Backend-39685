@@ -16,7 +16,11 @@
     <form id="formId" class="text-center">
       <p>Complete los siguientes campos para cargar un producto</p>
       <input type="text" id="title" placeholder="Title" />
+      <input type="text" id="desc" placeholder="Description" />
       <input type="number" id="price" placeholder="Price" />
+      <input type="text" id="code" placeholder="Code" />
+      <input type="number" id="stock" placeholder="Stock" />
+      <input type="text" id="cat" placeholder="Category" />
       <Button class="btn btn-primary" type="submit">Enviar</Button>
     </form>
     <span id="error"></span>
@@ -29,9 +33,15 @@
       <thead>
       <tr>
         <th scope="col"></th>
-        <th scope="col">Name</th>
         <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Thumbnail</th>
         <th scope="col">Price</th>
+        <th scope="col">Code</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Category</th>
+        <th scope="col">Status</th>
         <th scope="col"></th>
       </tr>
     </thead>
