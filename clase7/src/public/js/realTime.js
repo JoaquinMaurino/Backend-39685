@@ -63,6 +63,6 @@ form.addEventListener("submit", (e) => {
   } else {
     const error = document.getElementById("error");
     error.innerHTML =
-      "Completar los campos del formulario para agregar producto";
+      "*Debe completar todos los campos del formulario para agregar producto";
   }
 });

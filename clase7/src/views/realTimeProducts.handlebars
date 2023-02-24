@@ -10,20 +10,23 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="css/styles.css"/>
   </head>
   <body>
     <h1 class="text-center">Formulario para carga y eliminacion de productos</h1>
-    <form id="formId" class="text-center">
+    <div class="text-center">
+    <form id="formId" class="text-center d-inline-flex flex-column align-items-center">
       <p>Complete los siguientes campos para cargar un producto</p>
-      <input type="text" id="title" placeholder="Title" />
-      <input type="text" id="desc" placeholder="Description" />
-      <input type="number" id="price" placeholder="Price" />
-      <input type="text" id="code" placeholder="Code" />
-      <input type="number" id="stock" placeholder="Stock" />
-      <input type="text" id="cat" placeholder="Category" />
-      <Button class="btn btn-primary" type="submit">Enviar</Button>
+      <input type="text" id="title"  class="mb-1" placeholder="Title" />
+      <input type="text" id="desc"  class="mb-1" placeholder="Description" />
+      <input type="number" id="price"  class="mb-1" placeholder="Price" />
+      <input type="text" id="code"  class="mb-1" placeholder="Code" />
+      <input type="number" id="stock"  class="mb-1" placeholder="Stock" />
+      <input type="text" id="cat" class="mb-1"  placeholder="Category" />
+      <Button class="btn btn-primary"  class="mb-1" type="submit">Enviar</Button>
     </form>
-    <span id="error"></span>
+  </div>
+    <h4 id="error" class="text-center text-danger"></h4>
     <h2 class="text-center">Lista de productos en tiempo real:</h2>
     <div class="text-center">
     <Button id="deleteAll" class="btn btn-secondary mb-3">Eliminar todos los productos</button>
