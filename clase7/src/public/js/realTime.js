@@ -3,11 +3,14 @@ const form = document.getElementById("formId");
 const productTitle = document.getElementById("title");
 const productDesc = document.getElementById("desc");
 const productPrice = document.getElementById("price");
+const productImg = document.getElementById("img");
 const productCode = document.getElementById("code");
 const productStock = document.getElementById("stock");
 const productCat = document.getElementById("cat");
 const btnDelete = document.getElementById("deleteAll");
 
+
+//Renderiza los productos del array dentro de la table-row
 function renderData(data) {
   document.getElementById("products").innerHTML = "";
   data.map((product) => {
@@ -28,25 +31,36 @@ function renderData(data) {
     `;
   });
 }
+//Elimina un producto, envia su id al servidor
 function deleteProduct(id) {
   socket.emit("deleteProduct", id);
 }
 
+//Boton que elimina todos los producos, envia un array vacio al servidor
 btnDelete.addEventListener("click", () => {
   socket.emit("deleteAllProducts", []);
 });
 
+
+//Recibo error del servidor por CODE de producto existente
+socket.on("error-message", error=>{
+  document.getElementById("errorCode").innerHTML = "*" + error
+})
+
+// Invoco la funcion renderData y le paso como parametro el array que recibo del servidor
 socket.on("array", (data) => {
   renderData(data);
 });
 
+
+// Formulario para cargar producto
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   if (productTitle.value &&  productDesc.value && productCode.value && productStock.value && productCat.value && productPrice.value) {
     const newProduct = {
       title: productTitle.value,
       description: productDesc.value,
-      img: "",
+      img: productImg.value,
       price: productPrice.value,
       code: productCode.value,
       stock: productStock.value, 
@@ -58,6 +72,7 @@ form.addEventListener("submit", (e) => {
     productCode.value = "";
     productStock.value = "";
     productCat.value = "";
+    productImg.value = "";
     productPrice.value = "";
     socket.emit("product", newProduct);
   } else {
