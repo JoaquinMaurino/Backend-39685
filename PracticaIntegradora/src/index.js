@@ -1,15 +1,13 @@
 import 'dotenv/config'
-
 import express from 'express'
 import { Server } from 'socket.io'
-import { getManagerMessages } from './dao/daoManager.js'
+import { ManagerMessageMongoDB } from './dao/MongoDB/models/Message.js'
 import {engine} from 'express-handlebars'
 import * as path from "path";
 import { __dirname } from "./path.js";
-
-
+import routerProducts from './routes/productsRoutes.js'
 const app = express()
-const managerMessage = getManagerMessages()
+const managerMessage = new ManagerMessageMongoDB()
 
 //Midlewares
 app.use(express.json())
@@ -27,18 +25,16 @@ const server = app.listen(app.get("port"), ()=>{
     console.log(`Server running on Port: ${app.get("port")}`);
 })
 
-
 //socket.io
-const messages = [];
+let messagesArr = [];
 const io = new Server(server)
-
 io.on("connection", async (socket)=>{
-
     socket.on("message", async (info)=>{
-        await managerMessage.getElements([info])
-        const messages = await managerMessage.getElements()
-        console.log(messages);
-        socket.emit("allMessages", messages)
+        messagesArr.push(info)
+        await managerMessage.addElements([info])
+/*         const messages = await managerMessage.getElements()
+        console.log(messages); */
+        socket.emit("allMessages", messagesArr)
     })
 })
 
@@ -46,6 +42,9 @@ io.on("connection", async (socket)=>{
 app.use("/", express.static(__dirname + "/public"));
 
 // Messages View
-app.get("/messages", (req, res)=>{
-    res.render("messages")
+app.get("/chat", (req, res)=>{
+    res.render("chat")
 })
+
+//Products
+app.get("/products", routerProducts)

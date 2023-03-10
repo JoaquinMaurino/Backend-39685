@@ -5,6 +5,8 @@ import { __dirname } from "./path.js";
 import { engine } from "express-handlebars";
 import { Server } from "socket.io";
 import * as path from "path";
+import mongoose from "mongoose";
+import routerUser from "./routes/users.routes.js";
 
 const app = express();
 
@@ -20,6 +22,15 @@ app.use(express.json()); // Permite enviar objetos json (req.body)
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", path.resolve(__dirname, "./views")); //___dirname + views
+
+//MongoDB connection con Mongoose
+
+mongoose
+  .connect(
+    "mongodb+srv://joaquin9918:Joaquin9918@cluster0.fphmmi9.mongodb.net/?retryWrites=true&w=majority"
+  )
+  .then(() => console.log("DB Conectado"))
+  .catch((error) => console.log("Error en Conexion MongoDBAtlas: ", error));
 
 let products = [
   {
@@ -117,6 +128,7 @@ io.on("connection", (socket) => {
 app.use("/", express.static(__dirname + "/public"));
 app.use("/api/products", routerProducts);
 app.use("/api/carts", routerCarts);
+app.use("/users", routerUser) // Ruta de MongoDB
 
 //HBS: home
 app.get("/", (req, res) => {

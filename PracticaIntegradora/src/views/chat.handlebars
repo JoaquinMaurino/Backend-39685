@@ -10,16 +10,21 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="css/stylesChat.css"/>
   </head>
   <body>
-
-    <div>
+    <h1 class="text-center mt-3">Bienvenido al chat!</h1>
+    <p></p>
+    <div id="formContainer">
       <form id="messageForm">
         <input type="text" id="name" placeholder="Name" />
+        <input type="text" id="email" placeholder="Email address" />
         <input type="text" id="text" placeholder="Message" />
         <button>Send</button>
       </form>
     </div>
+    <h4 id="error" class="text-center text-danger"></h4>
+    <div id="messages"></div>
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.min.js"
@@ -32,6 +37,6 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
-    <script src="../public/js/messages.js"></script>
+    <script src="/js/chat.js"></script>
   </body>
 </html>

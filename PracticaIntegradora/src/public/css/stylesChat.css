@@ -1,0 +1,14 @@
+#messages{
+    display: flex;
+    flex-direction: column;
+}
+
+#formContainer{
+    display: flex;
+    justify-content: center;
+
+}
+
+#messageForm{
+    margin-top: 30px;
+}

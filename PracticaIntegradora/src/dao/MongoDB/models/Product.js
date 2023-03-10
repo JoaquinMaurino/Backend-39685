@@ -1,7 +1,7 @@
 import {Schema} from "mongoose";
 import { ManagerMongoDB } from "../../../db/mongoDBManager.js";
 
-const url = ''
+const url = process.env.URLMONGODB
 
 const productSchema = new Schema({
     nombre: String, 
@@ -10,7 +10,7 @@ const productSchema = new Schema({
     sock: Number
 })
 
-export class ManagerProductMongoDB extends ManagerMongoDB {
+export default class ManagerProductMongoDB extends ManagerMongoDB {
     constructor(){
         super(url, 'products', productSchema)
     }
