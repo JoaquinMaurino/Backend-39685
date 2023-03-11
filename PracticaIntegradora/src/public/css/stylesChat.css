@@ -1,14 +1,43 @@
 #messages{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 40%;
+    background-color: white;
+    height: 260px;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+#containerAll{
+    display: flex;
+    margin-top: 40px;
+    margin-left: 5%;
+    background-color: lightgrey;
+    height: 300px;
+    width: 90%;
+    border-radius: 15px;
+
+
 }
 
 #formContainer{
     display: flex;
     justify-content: center;
+    width: 50%;
 
 }
 
 #messageForm{
-    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
 }
+
+input{
+    width: 100%;
+    margin-bottom: 10px;
+}
+

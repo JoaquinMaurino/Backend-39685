@@ -4,12 +4,13 @@ const messageForm = document.getElementById("messageForm");
 const authorMsg = document.getElementById("name");
 const email = document.getElementById("email");
 const textMsg = document.getElementById("text");
+const btnClear = document.getElementById("btnClear")
 
 async function renderData(data) {
   document.getElementById("messages").innerHTML = "";
   await data.map((message) => {
     document.getElementById("messages").innerHTML += `<div>
-            ${message.name} [${message.email}]: ${message.message}
+            <strong>${message.name}</strong> [${message.email}]: ${message.message}
         </div>`;
   });
 }
@@ -17,6 +18,10 @@ async function renderData(data) {
 socket.on("allMessages", (data) => {
   renderData(data);
 });
+
+btnClear.onclick = () =>{
+  socket.emit("emptyArr", [])
+}
 
 messageForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -26,13 +31,11 @@ messageForm.addEventListener("submit", (e) => {
       email: email.value,
       message: textMsg.value,
     };
-    authorMsg.value = "";
-    email.value = "";
     textMsg.value = "";
     socket.emit("message", newMessage);
   } else {
     const error = document.getElementById("error");
     error.innerHTML =
-      "*Debe completar todos los campos para enviar el mensaje";
+    `<strong>*All fields must be completed in order to send the message</strong>`;
   }
 });
