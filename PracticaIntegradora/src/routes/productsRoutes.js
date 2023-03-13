@@ -10,12 +10,13 @@ routerProducts.get("/", async (req, res) => {
   limit
     ? (products = await managerProducts.getElements(0))
     : (products = await managerProducts.getElements(limit));
+  res.send({result: "success", payload: products}) 
 });
 
 routerProducts.get("/:id", async (req, res) => {
   const product = await managerProducts.getElementById(req.params.id);
   if (product) {
-    res.send(JSON.stringify(product));
+    res.send({result: "success", payload: product});
   } else {
     res.json({ Error: "id not found" });
   }
@@ -23,17 +24,17 @@ routerProducts.get("/:id", async (req, res) => {
 
 routerProducts.post("/", async (req, res) => {
   const product = await managerProducts.addElements(req.body);
-  res.send({ product });
+  res.send({result: "success", payload: product});
 });
 
 routerProducts.put("/:id", async (req, res) => {
   const product = await managerProducts.updateElement(req.params.id, req.body);
-  res.send(JSON.stringify(product));
+  res.send({result: "success", payload: product});
 });
 
 routerProducts.delete("/:id", async (req, res) => {
   const product = await managerProducts.deleteElement(req.params.id);
-  res.send(`Producto ${JSON.stringify(product)} eliminado`);
+  res.send({result: "success", payload: product});
 });
 
 export default routerProducts;

@@ -6,7 +6,7 @@ import {engine} from 'express-handlebars'
 import * as path from "path";
 import { __dirname } from "./path.js";
 import routerProducts from './routes/productsRoutes.js'
-import { info } from 'console'
+import routerUsers from './routes/usersRoutes.js'
 const app = express()
 
 
@@ -47,6 +47,7 @@ io.on("connection", async (socket)=>{
     })
 })
 
+
 //Routes
 app.use("/", express.static(__dirname + "/public"));
 
@@ -57,3 +58,7 @@ app.get("/chat", (req, res)=>{
 
 //Products
 app.get("/products", routerProducts)
+
+//Users
+app.get("/users", routerUsers)
+

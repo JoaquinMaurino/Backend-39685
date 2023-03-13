@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 export class ManagerMongoDB {
-    #url
+  #url;
   constructor(url, collection, schema) {
     this.#url = url; //atributo privado
     this.collection = collection;
@@ -9,54 +9,54 @@ export class ManagerMongoDB {
     this.model = mongoose.model(this.collection, this.schema);
   }
 
-  async #setConnection(){
-try {
-    await mongoose.connect(this.#url)
-    console.log('DB is connected');
-} catch (error) {
-    return error
-}
+  async #setConnection() {
+    try {
+      await mongoose.connect(this.#url);
+      console.log("DB is connected");
+    } catch (error) {
+      return error;
+    }
   }
 
-  async addElements(elements) {    //Uno o varios elementos
-    this.#setConnection()
+  async addElements(elements) {
+    //Uno o varios elementos
+    this.#setConnection();
     try {
       return await this.model.insertMany(elements);
     } catch (error) {
       return error;
     }
   }
-  async getElements() {  
-    this.#setConnection()  
+  async getElements() {
+    this.#setConnection();
     try {
       return await this.model.find();
     } catch (error) {
       return error;
     }
   }
-  async getElementById(id) {  
-    this.#setConnection() 
+  async getElementById(id) {
+    this.#setConnection();
     try {
-      return await this.model.findById(id)
+      return await this.model.findById(id);
     } catch (error) {
       return error;
     }
   }
   async updateElement(id, info) {
-    this.#setConnection()    
+    this.#setConnection();
     try {
-      return await this.model.findByIdAndUpdate(id, info)
+      return await this.model.findByIdAndUpdate(id, info);
     } catch (error) {
       return error;
     }
   }
   async deleteElement(id) {
-    this.#setConnection()   
+    this.#setConnection();
     try {
-      return await this.model.findByIdAndDelete(id)
+      return await this.model.findByIdAndDelete(id);
     } catch (error) {
       return error;
     }
   }
-
 }
